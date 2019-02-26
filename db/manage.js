@@ -3,8 +3,14 @@
 const { executeInSequence } = require('./util');
 const { execSync } = require('child_process');
 
-const psql = query => `psql -U postgres -d postgres -tAc "${query}"`;
+let psql = query => `psql -U postgres -d postgres -tAc "${query}"`;
+const psql_remote = query => `psql -h localhost -p 5432 -U postgres -d postgres -c"${query}"`;
 const exec = command => execSync(command).toString().trim();
+
+function connectLocal() {
+  console.log(exec(`psql -h localhost -p 5432 -U postgres`));
+  psql = psql_remote;
+}
 
 function createUser (user, pass) {
   const doesUserExist = `SELECT 'exists' FROM pg_roles WHERE rolname='${user}'`;
@@ -65,6 +71,7 @@ function deleteTables (pool) {
 }
 
 module.exports = {
+  connectLocal,
   createTables,
   truncateTables,
   deleteTables,

@@ -2,7 +2,7 @@
 
 const configFor = require('../db/config');
 const connectionPool = require('../db/connectionPool');
-const { createUser, createDb, createTables } = require('../db/manage');
+const { connectLocal, createUser, createDb, createTables } = require('../db/manage');
 
 let envs = process.argv.slice(2);
 if (envs.length === 0) {
@@ -10,6 +10,7 @@ if (envs.length === 0) {
 }
 
 async function initialize(config) {
+  connectLocal();
   createUser(config.user, config.pass);
   createDb(config.name);
   
