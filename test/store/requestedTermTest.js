@@ -82,6 +82,24 @@ describe('Requested term store', () => {
     })
   })
 
+  describe('getUnfulfilled', () => {
+    beforeEach(async () => {
+      await RequestedTerm.put('one', false)
+      await RequestedTerm.put('two', true)
+      await RequestedTerm.put('three', false)
+      await RequestedTerm.put('four', true)
+    })
+
+    it('gets all unfulfilled requested terms', async () => {
+      const results = await RequestedTerm.getUnfulfilled()
+
+      expect(results).to.eql([
+        {term: 'one', fulfilled: false},
+        {term: 'three', fulfilled: false},
+      ])
+    })
+  })
+
   describe('put', () => {
     it('inserts unfulfilled terms', async () => {
       const result = await RequestedTerm.put('great term')

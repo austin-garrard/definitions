@@ -42,6 +42,14 @@ function createRequestedTerm (db, log) {
         .catch(failure(term))
     },
 
+    getUnfulfilled: function () {
+      return db
+        .query('SELECT * FROM requested WHERE fulfilled=0')
+        .then(extractRows)
+        .then(formatFields)
+        .catch(failure())
+    },
+
     put: function (term, requested = false) {
       const _requested = requested ? 1 : 0
 
