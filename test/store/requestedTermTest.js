@@ -63,16 +63,15 @@ describe('Requested term store', () => {
       })
 
       it('returns an error', async () => {
-        const result = await RequestedTerm.get('great term')
+        const error = await RequestedTerm.get('great term')
+          .catch(error => error)
 
-        expect(result).to.eql({
-          success: false,
-          message: 'an unknown error occurred'
-        })
+        expect(error.message).to.eql('an unknown error occurred')
       })
 
       it('logs the raw error object', async () => {
         await RequestedTerm.get('great term')
+          .catch(error => error)
 
         expect(logs).to.eql([
           rawError,
@@ -94,8 +93,8 @@ describe('Requested term store', () => {
       const results = await RequestedTerm.getUnfulfilled()
 
       expect(results).to.eql([
-        {term: 'one', fulfilled: false},
-        {term: 'three', fulfilled: false},
+        { term: 'one', fulfilled: false },
+        { term: 'three', fulfilled: false }
       ])
     })
   })
@@ -127,15 +126,16 @@ describe('Requested term store', () => {
       const term = 'q'.repeat(61)
 
       it('returns an error', async () => {
-        const result = await RequestedTerm.put(term)
-        expect(result).to.eql({
-          success: false,
-          message: 'term is greater than 60 characters'
-        })
+        const error = await RequestedTerm.put(term)
+          .catch(error => error)
+
+        expect(error.message).to.eql('term is greater than 60 characters')
       })
 
       it('does not create a term', async () => {
         await RequestedTerm.put(term)
+          .catch(error => error)
+
         const result = await pool.query(`SELECT COUNT(*) FROM requested`)
 
         expect(result.rows[0]).to.eql({ count: '0' })
@@ -143,6 +143,7 @@ describe('Requested term store', () => {
 
       it('logs what happened', async () => {
         await RequestedTerm.put(term)
+          .catch(error => error)
 
         expect(logs).to.eql(['[ERROR][RequestedTerm] term is greater than 60 characters'])
       })
@@ -156,15 +157,15 @@ describe('Requested term store', () => {
       })
 
       it('returns an error', async () => {
-        const result = await RequestedTerm.put(term)
-        expect(result).to.eql({
-          success: false,
-          message: 'term "great term" already exists'
-        })
+        const error = await RequestedTerm.put(term)
+          .catch(error => error)
+
+        expect(error.message).to.eql('term "great term" already exists')
       })
 
       it('does not create a new term', async () => {
         await RequestedTerm.put(term)
+          .catch(error => error)
 
         const result = await pool.query(`SELECT COUNT(*) FROM requested`)
 
@@ -173,6 +174,7 @@ describe('Requested term store', () => {
 
       it('does not update the existing term', async () => {
         await RequestedTerm.put(term)
+          .catch(error => error)
 
         const existingTerm = await RequestedTerm.get(term)
 
@@ -184,6 +186,7 @@ describe('Requested term store', () => {
 
       it('logs what happened', async () => {
         await RequestedTerm.put(term)
+          .catch(error => error)
 
         expect(logs).to.eql(['[ERROR][RequestedTerm] term "great term" already exists'])
       })
@@ -205,16 +208,15 @@ describe('Requested term store', () => {
       })
 
       it('returns an error', async () => {
-        const result = await RequestedTerm.put('great term')
+        const error = await RequestedTerm.put('great term')
+          .catch(error => error)
 
-        expect(result).to.eql({
-          success: false,
-          message: 'an unknown error occurred'
-        })
+        expect(error.message).to.eql('an unknown error occurred')
       })
 
       it('logs the raw error object', async () => {
         await RequestedTerm.put('great term')
+          .catch(error => error)
 
         expect(logs).to.eql([
           rawError,
@@ -224,6 +226,7 @@ describe('Requested term store', () => {
 
       it('does not create a new term', async () => {
         await RequestedTerm.put('great term')
+          .catch(error => error)
 
         const result = await pool.query(`SELECT COUNT(*) FROM requested`)
 

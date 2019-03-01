@@ -26,10 +26,7 @@ function createRequestedTerm (db, log) {
     }
     log(`[ERROR][RequestedTerm] ${message}`)
 
-    return {
-      success: false,
-      message: message
-    }
+    return Promise.reject(new Error(message))
   }
 
   return {
