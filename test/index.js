@@ -17,7 +17,7 @@ const tearDown = () => app.listen().close();
 startApp();
 require('./authorTest')();
 require('./reportedTest')();
-require('./requestedTest')();
+require('./requestedTest');
 //require('./synonymsTest')();
 //require('./termsTest')();
 require('./entriesTest');
