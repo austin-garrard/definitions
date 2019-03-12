@@ -7,7 +7,7 @@ const db = require('../src/db')
 describe('Entries route' ,() => {
 
   beforeEach(async () => {
-    await db.query(`INSERT INTO action(id, title) VALUES(0, 'Status 1')`)
+    await db.query(`INSERT INTO action(title) VALUES('Status 1')`)
     await db.query(`INSERT INTO action(title) VALUES('Status 2')`)
   })
 
@@ -16,7 +16,7 @@ describe('Entries route' ,() => {
       term: 'cool term',
       definition: 'it is super cool',
       time_submitted: new Date('January 19, 1992'),
-      action: 0,
+      action: 1,
       identity: 'pretty queer',
       explanation: 'this is a really useful term, im sure of it'
     }
