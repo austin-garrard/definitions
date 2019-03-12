@@ -29,15 +29,6 @@ describe('Entries route' ,() => {
       expect(body).to.eql('Inserted entry for term: cool term')
       expect(statusCode).to.eql(200)
     })
-
-    it('creates a term', async () => {
-      const { statusCode, body } = await post('/entries', {
-        body: requestBody 
-      })
-
-      expect(body).to.eql('Inserted entry for term: cool term')
-      expect(statusCode).to.eql(200)
-    })
   })
 })
 
