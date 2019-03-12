@@ -5,6 +5,8 @@ beforeEach(async function resetDb() {
   await truncateTables(pool);
 });
 
+after(() => pool.end())
+
 const app = require('../src/server/index')
 const TEST_PORT = 4000;
 const startApp = () => app.listen(TEST_PORT, () => {
@@ -18,5 +20,5 @@ require('./reportedTest')();
 require('./requestedTest')();
 //require('./synonymsTest')();
 //require('./termsTest')();
-//require('./entriesTest');
+require('./entriesTest');
 tearDown();

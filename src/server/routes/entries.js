@@ -106,10 +106,9 @@ router.post('/', async (req, res) => {
   } catch (err) {
     console.error(err.stack);
     res.status(500).send('Error while inserting entry'); //could make more specific
+  } finally {
+    client.end();
   }
-
-  client.end();
-
 });
 
 

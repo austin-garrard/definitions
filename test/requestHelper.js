@@ -15,9 +15,17 @@ const transform = (config) => response => {
   return response;
 }
 
-const verb = f => (path, config = {}) => f(uri(path)).then(transform(config));
-const get = verb(getPm);
-const post = verb(postPm);
+const get = (path, config = {}) =>
+  getPm(uri(path))
+    .then(transform(config));
+
+const post = (path, config = {}) =>
+  postPm({
+    url: uri(path),
+    body: config.body,
+    json: true
+  })
+  .then(transform(config))
 
 const requestNewTerm = term => post(`/requested/${term}`);
 
