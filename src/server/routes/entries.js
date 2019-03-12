@@ -71,8 +71,6 @@ router.post('/', async (req, res) => {
   const client = new Client({ connectionString: db_url, ssl: ssl_setting });
   client.connect();
 
-  console.log(req.body);
-
   const {term, definition, time_submitted, action} = req.body;
   name = req.body.name ? req.body.name : '';
   identity = req.body.identity ? req.body.identity : '';
