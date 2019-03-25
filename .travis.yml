@@ -1,7 +1,19 @@
 language: node_js
 node_js:
-  - "node"
+  - "8"
+  - "10"
+  - "11"
 services:
-  - postgresql
+  postgresql
 before_script:
   - ./scripts/initDb.js test
+jobs:
+  include:
+    - stage: "Unit Tests"
+      node_js: "11"
+      before_script: cd client
+      script: yarn install && yarn test
+    - stage: "Integration Tests"
+      node_js: "11"
+      before_script: cd client
+      script: yarn install && yarn integration

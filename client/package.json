@@ -48,7 +48,8 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=./rafPolyfill.js",
+    "test": "react-scripts test unit --env=jsdom --setupTestFrameworkScriptFile=./rafPolyfill.js",
+    "integration": "react-scripts test integ --env=jsdom --setupTestFrameworkScriptFile=./rafPolyfill.js",
     "eject": "react-scripts eject",
     "toolbox": "react-toolbox-themr"
   },
