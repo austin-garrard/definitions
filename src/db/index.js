@@ -14,6 +14,4 @@ if (process.env.DATABASE_URL) {
   process.env.DATABASE_URL = config.connectionString;
 }
 
-
-//client connect inside each endpoint instead?
 module.exports = connectionPool(connectionString, config.ssl);

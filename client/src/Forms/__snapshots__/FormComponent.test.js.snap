@@ -1,0 +1,88 @@
+exports[`test termRequest? 1`] = `
+<div
+  className="flex-container">
+  <form
+    onSubmit={[Function]}>
+    <div
+      className="form">
+      <div
+        className="page-title">
+        Request a Term
+      </div>
+      <div />
+      <span
+        className="error"
+        style={
+          Object {
+            "padding": "0rem 1rem",
+          }
+        }>
+        * Required
+      </span>
+      <div
+        className="inputsBox">
+        <div
+          className="formInput">
+          <label>
+            What term do you want defined?
+          </label>
+           
+          <span
+            className="error">
+            *
+          </span>
+          <div
+            className="queerInput"
+            data-react-toolbox="input">
+            <input
+              className=""
+              defaultValue={undefined}
+              disabled={false}
+              maxLength={50}
+              name={undefined}
+              onChange={[Function]}
+              onKeyPress={undefined}
+              required={false}
+              role="input"
+              style={
+                Object {
+                  "background": "transparent",
+                }
+              }
+              type="Text"
+              value={undefined} />
+            <span
+              className={undefined} />
+            <span
+              className={undefined}
+              hidden={undefined}>
+              Your answer
+            </span>
+            <span
+              className={undefined}>
+              0
+              /
+              50
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="submitBox">
+        <button
+          className=" queerButton"
+          data-react-toolbox="button"
+          disabled={false}
+          href={undefined}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchStart={[Function]}
+          type="button">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

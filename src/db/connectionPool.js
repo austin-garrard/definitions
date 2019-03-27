@@ -1,6 +1,6 @@
+const { Pool } = require('pg');
 
 function connectionPool(connectionString, ssl) {
-  const { Pool } = require('pg');
   return new Pool({
     connectionString: connectionString,
     ssl: ssl

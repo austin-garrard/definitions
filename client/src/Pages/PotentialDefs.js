@@ -8,6 +8,13 @@ import '../assets/react-toolbox/theme.css';
 
 class PotentialDefs extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+            potentials: []
+        }
+    }
+
   componentDidMount(){
       let { auth } = this.props;
       if(!auth.isAuthenticated()) { auth.login(); }

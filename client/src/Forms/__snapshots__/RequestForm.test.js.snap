@@ -1,0 +1,103 @@
+exports[`test Request Form? 1`] = `
+<div
+  className="flex-container">
+  <form
+    onSubmit={[Function]}>
+    <div
+      className="form">
+      <div
+        className="page-title">
+        Request a Term
+      </div>
+      <div>
+        <p>
+          I\'m collecting informal definitions to help people understand LGBTQ+ terms they don\'t know!
+        </p>
+        <p>
+          You can request a term here that you want someone else to define.
+        </p>
+        <p>
+           Check out the 
+          <a
+            href="http://queerundefined.com/about">
+            about
+          </a>
+           page to read more about this project.
+        </p>
+      </div>
+      <span
+        className="error"
+        style={
+          Object {
+            "padding": "0rem 1rem",
+          }
+        }>
+        * Required
+      </span>
+      <div
+        className="inputsBox">
+        <div
+          className="formInput">
+          <label>
+            What term do you want defined?
+          </label>
+           
+          <span
+            className="error">
+            *
+          </span>
+          <div
+            className="lFVgC queerInput"
+            data-react-toolbox="input">
+            <input
+              className="_4bZUj"
+              defaultValue={undefined}
+              disabled={false}
+              maxLength={50}
+              name={undefined}
+              onChange={[Function]}
+              onKeyPress={undefined}
+              required={false}
+              role="input"
+              style={
+                Object {
+                  "background": "transparent",
+                }
+              }
+              type="Text"
+              value="" />
+            <span
+              className="_3FySS" />
+            <span
+              className="bMyi_"
+              hidden={undefined}>
+              Your answer
+            </span>
+            <span
+              className="_1oTuT">
+              0
+              /
+              50
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="submitBox">
+        <button
+          className="_2Agdx _221ic _2Agdx _2GH_L _1ZxqC _3tTAW queerButton"
+          data-react-toolbox="button"
+          disabled={false}
+          href={undefined}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchStart={[Function]}
+          type="button">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

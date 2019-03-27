@@ -2,11 +2,12 @@ import auth0 from 'auth0-js';
 import history from './history';
 
 export default class Auth {
+  hostname = process.env["NODE_ENV"] === "production" ? "queer-undefined.herokuapp.com" : "localhost:3000";
+
   auth0 = new auth0.WebAuth({
     domain: 'queerundefined.auth0.com',
     clientID: 'amJ8dm1X0ko-PhDvz3DOQkOd-kl3e42z',
-    //redirectUri: 'http://localhost:5000/callback', //change this soon
-    redirectUri: 'http://queer-undefined.herokuapp.com/callback',
+    redirectUri: 'http://' + this.hostname + '/callback',
     audience: 'https://queerundefined.auth0.com/userinfo', //?
     responseType: 'token id_token',
     scope: 'openid'

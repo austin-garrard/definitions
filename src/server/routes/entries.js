@@ -1,11 +1,13 @@
 const Router = require('express-promise-router');
 const router = new Router();
-const pool = require('../db');
-const ssl_setting = !process.env.DATABASE_URL.startsWith("postgres://localhost")
+const pool = require('../../db');
 
-
+// TODO use client singleton instead of creating one ourselves
+// for now we ensure the ssl setting matches the environment
+const dbConfig = require('../../db/config')(process.env.NODE_ENV || 'development');
+const ssl_setting = dbConfig.ssl;
+const db_url = dbConfig.connectionString;
 const { Client } = require('pg');
-const db_url = process.env.DATABASE_URL;
 
 var bodyParser = require('body-parser');
 router.use(bodyParser.json());

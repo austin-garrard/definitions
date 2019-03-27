@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const configFor = require('../db/config');
-const connectionPool = require('../db/connectionPool');
-const { connectLocal, createUser, createDb, createTables } = require('../db/manage');
+const configFor = require('../src/db/config');
+const connectionPool = require('../src/db/connectionPool');
+const { connectLocal, createUser, createDb, createTables } = require('../src/db/manage');
 
 let envs = process.argv.slice(2);
 if (envs.length === 0) {
@@ -10,7 +10,6 @@ if (envs.length === 0) {
 }
 
 async function initialize(config) {
-  connectLocal();
   createUser(config.user, config.pass);
   createDb(config.name);
   

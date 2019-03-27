@@ -1,6 +1,6 @@
 const Router = require('express-promise-router');
 const router = new Router();
-const pool = require('../db');
+const pool = require('../../db');
 
 function decodeUrl(str) {
   str = str.replace(/%28/g, "(");

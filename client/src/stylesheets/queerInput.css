@@ -1,0 +1,30 @@
+._3nrqp {
+    left: 0;
+}
+
+._3lw90 {
+    max-height: 90vh;
+    max-width: 90vw;
+    overflow: scroll;
+}
+
+.queerInput input {
+    background-color: white;
+    padding:8px 8px;
+    margin-top:2px;
+}
+.queerInput span::before {
+    background-color: #D083FC;
+}
+.queerInput span::after {
+    background-color: #D083FC;
+}
+.queerInput ._4bZUj:focus:not([disabled]):not([readonly]) ~ ._34120:not(.GRQEP) {
+    color: white;
+}
+.queerInput ._4bZUj[type=time]~._34120:not(.GRQEP) {
+    color: white;
+}
+.queerInput label {
+    left: 4px;
+}

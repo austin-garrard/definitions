@@ -9,7 +9,9 @@
 
 # production
 /build
-/client/build
+client/build
+src/server/static
+
 # misc
 .DS_Store
 .env

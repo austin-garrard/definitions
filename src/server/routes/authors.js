@@ -1,6 +1,6 @@
 const Router = require('express-promise-router');
 const router = new Router();
-const pool = require('../db')
+const pool = require('../../db')
 
 module.exports = router;
 

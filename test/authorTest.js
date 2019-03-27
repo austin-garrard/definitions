@@ -22,7 +22,7 @@ const authorTest = () => {
 
         it('should return one author for a valid author id', async () => {
 	    // TODO
-	    const pool = require('../db');
+	    const pool = require('../src/db');
 	    await pool.query(`INSERT INTO author(name, identity)\
 			      VALUES('Agender Al', 'ace')`);
 

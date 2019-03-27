@@ -1,30 +1,28 @@
 # Getting Started
 
 #### Setup
-* run `yarn install` to install dependencies
-
-##### Database
-* Requires postgresql to be installed.
-* `yarn run db:init`: create a user and a database, then create the empty tables
-* `yarn run db:clean`: delete the user and database
-* The commands use `db/config.js` for the connection info, which you can override by setting DATABASE_URL to a valid postgres connection string
+* Requires postgresql >=9.2 to be installed and running
+* `yarn setup` installs dependencies, configures database, runs the tests, and finally runs the app
 
 #### To run locally
 
-Front end:
+_Development:_
 
-* run `yarn start` in the `client` directory to start the front end
-OR
-* run `yarn run build` to generate a new build for the backend to serve
+* run `yarn start` in the project root to start the backend on port 5000
+  * TODO hot reloading
+* run `yarn start` in the `client` directory to start the front end on port 3000
+  * Ajax requests will be forwarded to the server
+* access the application at localhost:3000
 
-Back end:
+_Production Mode:_
 
+* run `yarn client:build` to prepare the static assets for the server
 * run `yarn start` in the root directory to start the server
+* access the application at localhost:5000
 
 #### Helpful commands
 * `yarn test` to run the tests
 * `heroku logs` to check the logs
-
 
 #### Deploy process
 * To deploy to staging from a specified branch:
@@ -36,6 +34,11 @@ Back end:
 * To rollback the most recent release
 * `heroku rollback -r <ENVIRONMENT>`
 
+#### Database
+* `yarn run db:init`: create a user and a database, then create the empty tables
+* `yarn run db:clean`: delete the user and database
+* The commands use `db/config.js` for the connection info, which you can override by setting DATABASE_URL to a valid postgres connection string
+* The postgres client must be installed on the development machine regardless where the DB is running.
 # Some history:
 This started as a prototype that I made relatively quickly and thought no one would have interest in, which means there's a lot of anti-patterns.
 I used Google forms and spreadsheets to collect definitions online before I even had the site built (to gauge interest).

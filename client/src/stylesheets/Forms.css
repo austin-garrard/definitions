@@ -1,0 +1,52 @@
+.form {
+    background-color: white;
+    padding: 2.7rem 1.7rem;
+    font-size: .85rem;
+    max-width: 650px;
+}
+
+.form p {
+    padding-left: 1rem;
+}
+
+.page-title {
+    font-size: 2.3rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.formInput {
+    width: 100%;
+    background-color: white;
+    padding: 1.3rem 1rem;
+    font-size: 1.3rem;
+    margin: 0.15rem 0rem;
+}
+
+.inputsBox {
+    padding-top: 2rem;
+    padding-right: 2rem;
+}
+
+.submitBox {
+    margin-top: 34px;
+    padding-left: 1rem;
+}
+
+.formInputError {
+    background-color: #fce8e6;
+}
+
+.error {
+    color: #c5221f;
+}
+
+.errorMessage {
+    font-size: 1.05rem;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
