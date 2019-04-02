@@ -1,7 +1,9 @@
 exports[`test Request Form? 1`] = `
 <div
-  className="flex-container">
+  className="flex-container"
+  data-testid="form-container">
   <form
+    data-testid="request-form"
     onSubmit={[Function]}>
     <div
       className="form">
@@ -51,6 +53,7 @@ exports[`test Request Form? 1`] = `
             data-react-toolbox="input">
             <input
               className="_4bZUj"
+              data-testid="request-input"
               defaultValue={undefined}
               disabled={false}
               maxLength={50}

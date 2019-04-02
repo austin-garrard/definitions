@@ -10,6 +10,7 @@ exports[`test termRequest? 1`] = `
     data-react-toolbox="input">
     <input
       className=""
+      data-testid="request-input"
       defaultValue={undefined}
       disabled={false}
       maxLength={50}
@@ -58,6 +59,7 @@ exports[`test termRequest? 2`] = `
     data-react-toolbox="input">
     <input
       className=""
+      data-testid="request-input"
       defaultValue={undefined}
       disabled={false}
       maxLength={50}

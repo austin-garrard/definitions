@@ -36,11 +36,11 @@ export default class RequestForm extends Component {
   }
 
   handleSnackbarClick = (event, instance) => {
-    this.setState({ ...this.state, stateBar: false});
+    this.setState({ stateBar: false, snackbarMessage: ''});
   };
 
   handleSnackbarTimeout = (event, instance) => {
-    this.setState({ ...this.state, stateBar: false});
+    this.setState({stateBar: false, snackbarMessage: ''});
   };
 
   handleChange = (label, isRequired, showError, value) => {
