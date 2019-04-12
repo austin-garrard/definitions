@@ -10,10 +10,19 @@ import './stylesheets/queerButton.css';
 import './stylesheets/queerInput.css';
 import './stylesheets/queerSnackbar.css';
 
-import {Autocomplete, theme, ThemeProvider, TooltipButton} from './Libraries/ReactToolboxLibrary';
+import {Autocomplete, theme, ThemeProvider} from './Libraries/ReactToolboxLibrary';
 import { ResultList } from './Libraries/ComponentsLibrary';
 import history from './history';
-import { welcomeBlurb } from "./utils/TextBlurbs";
+import {
+  DisagreementBlurb,
+  LoadingDefinitionsBlurb,
+  NoDefinitionsBlurb,
+  WelcomeBlurb
+} from "./blurbs";
+import { Tooltips } from "./tooltips";
+
+const add_definition_url = "https://docs.google.com/forms/d/e/1FAIpQLSfKF0yyleI5XdPVtl-bEuQUGy2HZPfnUU-e2sDjL31eLuygUA/viewform?usp=sf_link";
+const request_definition_url = "https://goo.gl/forms/xrZyTzaVo8Addq8d2";
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +34,6 @@ class App extends Component {
 
     super();
     this.state = {
-      searchTerm: 'filler text',
       def: '',
       my_term: props.term,
       entries: [],
@@ -76,7 +84,10 @@ class App extends Component {
     const showLoading = this.state.entriesLoading;
     const locationStrings = window.location.href.split(".com/");
     const canonicalUrl = "https://www.queerundefined.com/" + locationStrings[1];
-    
+
+    const any_term = this.state.my_term !== "";
+    const any_entries = my_entries && my_entries.length > 0;
+    const at_starting_url = window.location.pathname === "/";
 
   return(
     <DocumentTitle title={pageTitle}>
@@ -108,23 +119,23 @@ class App extends Component {
       />
     </div>
 
-      {(!showLoading && this.state.my_term !== "" && my_entries.length === 0) &&
-        <div className="blurb"> No definitions yet. You can <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKF0yyleI5XdPVtl-bEuQUGy2HZPfnUU-e2sDjL31eLuygUA/viewform?usp=sf_link" target="new">add one</a> or <a href="https://goo.gl/forms/xrZyTzaVo8Addq8d2" target="new">request</a> that this term be defined. </div>
-      }
-      {(this.state.my_term !== "" && showLoading) &&
-        <div className="blurb"> Loading definitions... </div>
-      }
-      {(this.state.my_term === "" && window.location.pathname === "/") &&
-        <div className="blurb">{welcomeBlurb}</div>
-      }
-      <ResultList style={{display:"flex", flexDirection:"column", alignContent:"center"}} entries={my_entries} />
-      <div style={{position: 'fixed', bottom: '15px', right: '15px'}}>
-        {this.props.auth.isAuthenticated() && <TooltipButton icon="clear" onClick={this.props.auth.logout} mini floating primary style={{margin: '5px'}} tooltip="logout"/>}
-        <TooltipButton className="queerButton" icon='feedback' mini floating primary href="https://docs.google.com/forms/d/e/1FAIpQLSfKF0yyleI5XdPVtl-bEuQUGy2HZPfnUU-e2sDjL31eLuygUA/viewform?usp=sf_link" target="_blank" style={{margin: '5px'}} tooltip='define'/>
-        <TooltipButton className="queerButton" icon='live_help' mini floating primary style={{margin: '5px'}} tooltip='request' href="https://goo.gl/forms/xrZyTzaVo8Addq8d2" target="_blank" />
-        <TooltipButton className="queerButton" icon='info' onClick={this.aboutOnClick} mini floating primary style={{margin: '5px'}} tooltip="info"/>
+    {(any_term && showLoading) && <LoadingDefinitionsBlurb />}
+    {(!showLoading && any_term && !any_entries) &&
+        <NoDefinitionsBlurb
+          addDefinitionUrl={add_definition_url}
+          requestDefinitionUrl={request_definition_url}
+        />
+    }
+    {(any_entries) && <DisagreementBlurb addDefinitionUrl={add_definition_url} />}
+    {(!any_term && at_starting_url) && <WelcomeBlurb />}
 
-      </div>
+      <ResultList style={{display:"flex", flexDirection:"column", alignContent:"center"}} entries={my_entries} />
+      <Tooltips
+        auth={this.props.auth}
+        aboutOnClick={this.aboutOnClick.bind(this)}
+        addDefinitionUrl={add_definition_url}
+        requestDefinitionUrl={request_definition_url}
+      />
     </div>
     </ThemeProvider>
     </DocumentTitle>

@@ -2,7 +2,9 @@ import auth0 from 'auth0-js';
 import history from './history';
 
 export default class Auth {
-  hostname = process.env["NODE_ENV"] === "production" ? "queer-undefined.herokuapp.com" : "localhost:3000";
+  hostnames = {production: "queerundefined.com", staging: "qu-staging.herokuapp.com", local: "localhost:3000"};
+  qu_env = process.env["QU_ENV"] || "local";
+  hostname = this.hostnames[this.qu_env];
 
   auth0 = new auth0.WebAuth({
     domain: 'queerundefined.auth0.com',

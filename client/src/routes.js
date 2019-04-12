@@ -3,7 +3,7 @@ import { Route, Router } from 'react-router-dom'; //yarn add
 import history from './history';
 import { getTermFromPath, searchHashRedirect } from "./utils/UtilityFunctions";
 
-import { Callback, PotentialDefs, DefineForm,
+import { Callback, PotentialDefs, PotentialTerms, DefineForm,
     RequestForm, ReportedDefs, Glossary, About, App, Auth } from './Libraries/ComponentsLibrary';
 
 const auth = new Auth();
@@ -20,6 +20,7 @@ const makeMainRoutes = () => {
         <div>
           <Route path="/*" render={(props) => {searchHashRedirect(); return <App auth={auth} term={getTermFromPath(props.match.params[0])}/>;} }/>
           <Route path="/potentialdefs" render={() => <PotentialDefs auth={auth}/>} />
+          <Route path="/potentialterms" render={() => <PotentialTerms auth={auth}/>} />
           <Route path="/defineform" render={() => <DefineForm/>} />
           <Route path="/requestform" render={() => <RequestForm/>} />
           <Route path="/reporteddefs" render={() => <ReportedDefs auth={auth}/>} />

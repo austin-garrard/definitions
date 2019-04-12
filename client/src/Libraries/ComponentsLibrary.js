@@ -9,9 +9,10 @@ import App from '../App';
 import Auth from '../Auth';
 import ResultList from '../Pages/ResultList.js';
 import ResultCard from '../Pages/ResultCard';
+import PotentialTerms from '../Pages/PotentialTerms';
 
 
 export { Callback, PotentialDefs, DefineForm,
-    RequestForm, ReportedDefs, Glossary, About, App, Auth, ResultList, ResultCard };
+    RequestForm, ReportedDefs, Glossary, About, App, Auth, ResultList, ResultCard, PotentialTerms };
 
 

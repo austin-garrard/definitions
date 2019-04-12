@@ -1,8 +1,10 @@
 const pool = require('../src/db');
 const { truncateTables } = require('../src/db/manage');
+const { seedActions } = require('../src/db/seeds')
 
 beforeEach(async function resetDb() {
   await truncateTables(pool);
+  await seedActions(pool); 
 });
 
 const app = require('../src/server/app')

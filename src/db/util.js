@@ -6,11 +6,17 @@ function executeInSequence (pool, queries) {
   return queries
     .reduce(
       (chain, q) => chain.then(() => pool.query(q)),
-      Promise.resolve())
+      Promise.resolve()
+    )
     .catch(e => setImmediate(() => {throw e}));
 }
 
+function unwrap (db, ...query) {
+  return db.query(...query)
+    .then(rawResult => rawResult.rows)
+}
 
 module.exports = {
- executeInSequence 
+  executeInSequence ,
+  unwrap
 }

@@ -10,7 +10,11 @@ var masonryOptions = {
 const ResultList = (props) => {
 
   const { entries } = props;
-  const listItems = entries.map((entry) => <ResultCard key={entry["entry_id"]} entry={entry}/>);
+  const listItems = entries.map((entry) =>
+    <ResultCard
+      key={entry["entry_id"]}
+      entry={entry}
+      />);
 
   return (
     <Masonry className="defs" options={masonryOptions}>{listItems}</Masonry>
