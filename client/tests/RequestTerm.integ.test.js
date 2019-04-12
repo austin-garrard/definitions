@@ -2,9 +2,6 @@ import React from 'react';
 import 'jest-dom/extend-expect'
 import RequestForm from '../src/Forms/RequestForm';
 import { render, fireEvent, waitForElement} from 'react-testing-library';
-const domTestingLib = require('dom-testing-library')
-const { queries } = domTestingLib
-import * as customQueries from '../src/utils/test-utils'
 
 const mockResponse = (data, status = 200) => jest.fn().mockReturnValue(
   Promise.resolve({
@@ -16,9 +13,7 @@ global.fetch = mockResponse();
 
 it('Renders form and submit term', async () => {
   // Arrange
-  const defaultQueries = customQueries.default
-  const { getByText, getByTestId } = render(<RequestForm />,
-    { queries: { ...queries, ...defaultQueries }, })
+  const { getByText, getByTestId, queryByText } = render(<RequestForm />)
   const requestForm = getByTestId('request-form')
   const inputTerm = getByTestId('request-input')
   const submitButton = getByText(/Submit/)
@@ -56,13 +51,7 @@ it('Renders form and submit term', async () => {
 
   // Act
   fireEvent.click(snackbarDismissBttn)
-  try {
-    await waitForElement(() => getByText(/Your request for Queer was successful/))
-  } catch (e) {
-    // Assert
-    expect(e.message).toBe('Unable to find the element')
-  }
 
   // Assert
-  expect(requestForm).not.toContainElement(snackbar)
+  expect(queryByText(/Your request for Queer was successful/)).not.toBeInTheDocument()
 });
